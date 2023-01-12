@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heros
+  labels:
+    app: heros
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: heros
+  template:
+    metadata:
+      labels:
+        app: heros
+    spec:
+      containers:
+      - name: heros
+        image: workshop/heros:latest
+        ports:
+        - name: http
+          containerPort: 8080
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: QUARKUS_DATASOURCE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: heros-config
+                key: database
+          - name: QUARKUS_DATASOURCE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: heros-database-secret
+                key: username
+          - name: QUARKUS_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: heros-database-secret
+                key: password

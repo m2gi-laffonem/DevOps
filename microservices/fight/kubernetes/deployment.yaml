@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fight
+  labels:
+    app: fight
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: fight
+  template:
+    metadata:
+      labels:
+        app: fight
+    spec:
+      containers:
+      - name: fight
+        image: workshop/fight:latest
+        ports:
+        - name: http
+          containerPort: 8080
+        imagePullPolicy: IfNotPresent

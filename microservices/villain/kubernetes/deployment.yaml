@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: villain
+  labels:
+    app: villain
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: villain
+  template:
+    metadata:
+      labels:
+        app: villain
+    spec:
+      containers:
+      - name: villain
+        image: workshop/villain:latest
+        ports:
+        - name: http
+          containerPort: 8080
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: QUARKUS_DATASOURCE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: villain-config
+                key: database
+          - name: QUARKUS_DATASOURCE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: villain-database-secret
+                key: username
+          - name: QUARKUS_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: villain-database-secret
+                key: password
