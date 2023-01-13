@@ -40,8 +40,8 @@ jobs:
       - name: Push images
         run: |
           cd microservices/heros
-          docker push $username/heroes_service .
+          docker push $username/heroes_services
           cd ../villain
-          docker push $username/villains_services .
+          docker push $username/villains_services
           cd ../fight
-          docker push $username/fight_services .
+          docker push $username/fight_services
