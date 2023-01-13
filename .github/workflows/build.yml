@@ -1,4 +1,4 @@
-name: Continuous Integration Build
+name: Continuous Integration Build 2
 
 on:
   push:
