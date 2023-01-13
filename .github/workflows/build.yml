@@ -24,16 +24,19 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Heroes with Maven
         run: |
+          cd microservices/heros
           mvn -B clean package
           docker build -f microservices/heros/src/main/docker/Dockerfile.jvm -t $username/heroes_services .
           docker push $username/heroes_services .
       - name: Build Villain with Maven
         run: |
+          cd microservices/villain
           mvn -B clean package
           docker build -f microservices/villain/src/main/docker/Dockerfile.jvm -t $username/villains_services .
           docker push $username/villains_services .
       - name: Build Fight with Maven
         run: |
+          cd microservices/fight
           mvn -B clean package
           docker build -f microservices/fight/src/main/docker/Dockerfile.jvm -t $username/fight_services .
           docker push $username/fight_services .
