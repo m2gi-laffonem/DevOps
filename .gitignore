@@ -10,6 +10,11 @@ release.properties
 .settings/
 bin/
 
+#minukube , kubectl
+kubectl
+kubectl.sha256
+minikube-linux-amd64
+
 # IntelliJ
 .idea
 *.ipr
