@@ -28,6 +28,13 @@ public class Hero extends PanacheEntity {
 
     @Override
     public String toString() {
-        return "" + name + "," + otherName + "," + level + "," + picture + "," + powers;
+        return "Hero{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", otherName='" + otherName + '\'' +
+                ", level=" + level +
+                ", picture='" + picture + '\'' +
+                ", powers='" + powers + '\'' +
+                '}';
     }
 }

@@ -8,12 +8,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RegisterRestClient(configKey = "heros")
-@Produces(MediaType.TEXT_PLAIN)
+@Produces(MediaType.APPLICATION_JSON)
 public interface HerosClient {
 
-    @Path("/heros")
+    @Path("/heroes/random")
     @GET
-    String getHeros();
+    Hero getHero();
 
     @Path("/crash")
     @GET

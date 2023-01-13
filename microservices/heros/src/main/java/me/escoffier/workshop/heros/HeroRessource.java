@@ -16,6 +16,7 @@ import java.util.Random;
 
 
 @Path("/")
+@Produces(MediaType.APPLICATION_JSON)
 public class HeroRessource {
 
  	private static final Logger LOGGER = Logger.getLogger("my-heros-resource");
@@ -24,10 +25,11 @@ public class HeroRessource {
     Vertx vertx;
 
     @GET
-    @Path("/heros")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getRandomHero() {
-        return Hero.findRandom().toString();
+    @Path("/heroes/random")
+    public Hero getRandomHero() {
+        Hero hero = Hero.findRandom();
+        LOGGER.debug("Found random hero " + hero);
+        return hero;
     }
     
     @GET

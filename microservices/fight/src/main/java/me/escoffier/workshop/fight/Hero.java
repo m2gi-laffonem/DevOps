@@ -1,6 +1,6 @@
 package me.escoffier.workshop.fight;
 
-public class Villain {
+public class Hero {
 
     public String name;
     public String otherName;
@@ -8,7 +8,7 @@ public class Villain {
     public String picture;
     public String powers;
 
-    public Villain() {
+    public Hero(){
 
     }
 }

@@ -9,7 +9,7 @@ import java.util.Random;
 
 @Entity
 public class Villain extends PanacheEntity {
- 
+
     public String name;
     public String otherName;
     public int level;
@@ -27,6 +27,13 @@ public class Villain extends PanacheEntity {
 
     @Override
     public String toString() {
-        return "" + name + "," + otherName + "," + level + "," + picture + "," + powers;
+        return "Villain{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", otherName='" + otherName + '\'' +
+                ", level=" + level +
+                ", picture='" + picture + '\'' +
+                ", powers='" + powers + '\'' +
+                '}';
     }
 }

@@ -22,33 +22,17 @@ public class FightResource {
     @Inject @RestClient VillainClient villains;
 
     @GET
-    @Path("/heros")
-    public Heros getRandomHero() {
-        Heros hero = new Heros(heros.getHeros());
-        LOGGER.debug("Found random hero " + hero);
-        return hero;
-    }
-
-    @GET
-    @Path("/villain")
-    public Villain getRandomVillain() {
-        Villain villain = new Villain(villains.getVillain());
-        LOGGER.debug("Found random villain " + villain);
-        return villain;
-    }
-
-    @GET
     @Path("/fight")
     public Fight fight() {
         return fight(
-                getRandomHero(),
-                getRandomVillain()
+                heros.getHero(),
+                villains.getVillain()
         );
     }
 
     private final Random random = new Random();
 
-    private Fight fight(Heros hero, Villain villain) {
+    private Fight fight(Hero hero, Villain villain) {
         int heroAdjust = random.nextInt(20);
         int villainAdjust = random.nextInt(20);
 

@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: heros
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: heros
   ports:

@@ -8,12 +8,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RegisterRestClient(configKey = "villain")
-@Produces(MediaType.TEXT_PLAIN)
+@Produces(MediaType.APPLICATION_JSON)
 public interface VillainClient {
 
-    @Path("/villain")
+    @Path("/villains/random")
     @GET
-    String getVillain();
+    Villain getVillain();
 
     @Path("/crash")
     @GET

@@ -14,18 +14,20 @@ import java.util.Random;
 import io.vertx.core.Vertx;
 
 @Path("/")
+@Produces(MediaType.APPLICATION_JSON)
 public class VillainResssource {
 
  	private static final Logger LOGGER = Logger.getLogger("my-villain-ressource");
  
  	@Inject
     Vertx vertx;
-    
+
     @GET
-    @Path("/villain")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getRandomVillain() {
-        return Villain.findRandom().toString();
+    @Path("/villains/random")
+    public Villain getRandomVillain() {
+        Villain villain = Villain.findRandom();
+        LOGGER.debug("Found random villain " + villain);
+        return villain;
     }
     
     @GET 
