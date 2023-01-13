@@ -27,16 +27,19 @@ jobs:
           cd microservices/heros
           mvn -B clean package
           docker build -f src/main/docker/Dockerfile.jvm -t workshop/heros:latest .
+          docker tag workshop/heros:latest $username/heroes_services
       - name: Build Villain with Maven
         run: |
           cd microservices/villain
           mvn -B clean package
           docker build -f src/main/docker/Dockerfile.jvm -t workshop/villain:latest .
+          docker tag workshop/villain:latest $username/villains_services
       - name: Build Fight with Maven
         run: |
           cd microservices/fight
           mvn -B clean package
           docker build -f src/main/docker/Dockerfile.jvm -t workshop/fight:latest .
+          docker tag workshop/fight:latest $username/fight_services
       - name: Push images
         run: |
           cd microservices/heros
