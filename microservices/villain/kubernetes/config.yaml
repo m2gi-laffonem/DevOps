@@ -4,4 +4,5 @@ kind: ConfigMap
 metadata:
   name: villain-config
 data:
+  slow: "true"
   database: "jdbc:postgresql://villain-database:5432/villain"

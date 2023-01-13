@@ -12,6 +12,8 @@ import javax.ws.rs.core.MediaType;
 import org.jboss.logging.Logger;
 import java.util.Random;
 import io.vertx.core.Vertx;
+import java.io.IOException;
+import javax.annotation.PostConstruct;
 
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
@@ -22,15 +24,38 @@ public class VillainResssource {
  	@Inject
     Vertx vertx;
 
+    boolean slow;
+
+    Random random = new Random();
+
+    @PostConstruct
+    public void configure() {
+        String env = System.getenv("SLOW");
+        if (env != null) {
+            slow = Boolean.parseBoolean(env);
+        }  else {
+            slow = false;
+        }
+
+        LOGGER.info("Slow mode enabled? " + slow);
+    }
+
     @GET
     @Path("/villains/random")
     public Villain getRandomVillain() {
         Villain villain = Villain.findRandom();
+
+        if (slow) {
+            int delay = random.nextInt(2000) + 1;
+            LOGGER.infof("Delaying response by %d ms", delay);
+            nap(delay);
+        }
+
         LOGGER.debug("Found random villain " + villain);
         return villain;
     }
     
-    @GET 
+    @GET
     @Path("/crash")
     @Produces(MediaType.TEXT_PLAIN)
     public String crash() {
@@ -44,5 +69,13 @@ public class VillainResssource {
             vertx.close();
         }).start();
         return "bye bye";
+    }
+
+    private void nap(int delay) {
+        try {
+            Thread.sleep(delay);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }

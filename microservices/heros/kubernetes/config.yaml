@@ -4,4 +4,5 @@ kind: ConfigMap
 metadata:
   name: heros-config
 data:
+  slow: "true"
   database: "jdbc:postgresql://heros-database:5432/heros"

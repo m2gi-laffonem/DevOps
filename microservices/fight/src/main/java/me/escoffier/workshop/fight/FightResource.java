@@ -4,6 +4,8 @@ import org.jboss.logging.Logger;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -23,11 +25,27 @@ public class FightResource {
 
     @GET
     @Path("/fight")
+    @Counted("fight.fight.invocations")
+    @Timed("fight.fight.time")
     public Fight fight() {
         return fight(
                 heros.getHero(),
                 villains.getVillain()
         );
+    }
+
+    @GET
+    @Path("/crash/hero")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String crashHeroService() {
+        return heros.crash();
+    }
+
+    @GET
+    @Path("/crash/villain")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String crashVillainService() {
+        return villains.crash();
     }
 
     private final Random random = new Random();
