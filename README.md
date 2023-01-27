@@ -77,3 +77,10 @@ mvn quarkus:dev -Dquarkus.args='--deployment=...'
 En remplacent les 3 petits points par le nom du service "heros", "villain" ou "fight"
 
 Cette commande va supprimer aléatoirement 1,2 ou 3 pods du nom que vous avez mis dans deployment.
+
+## Nos adresses mails
+
+Vincent Bonato : vincent.bonato@etu.univ-grenoble-alpes.fr
+Adrien Legoff : adrienlegoff2629@gmail.com
+Tommy Comtois : tommy.comtois@etu.univ-grenoble-alpes.fr
+Emile Laffont : emile.laffont@etu.univ-grenoble-alpes.fr
