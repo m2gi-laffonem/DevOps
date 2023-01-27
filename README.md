@@ -80,7 +80,7 @@ Cette commande va supprimer aléatoirement 1,2 ou 3 pods du nom que vous avez mi
 
 ## Nos adresses mails
 
-Vincent Bonato : vincent.bonato@etu.univ-grenoble-alpes.fr
-Adrien Legoff : adrienlegoff2629@gmail.com
-Tommy Comtois : tommy.comtois@etu.univ-grenoble-alpes.fr
-Emile Laffont : emile.laffont@etu.univ-grenoble-alpes.fr
+* Vincent Bonato : vincent.bonato@etu.univ-grenoble-alpes.fr
+* Adrien Legoff : adrienlegoff2629@gmail.com
+* Tommy Comtois : tommy.comtois@etu.univ-grenoble-alpes.fr
+* Emile Laffont : emile.laffont@etu.univ-grenoble-alpes.fr
