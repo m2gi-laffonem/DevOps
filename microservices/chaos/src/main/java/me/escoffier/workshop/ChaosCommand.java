@@ -7,6 +7,8 @@ import io.fabric8.kubernetes.client.KubernetesClient;
 import org.jboss.logging.Logger;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import java.util.Random;
+
 
 import javax.inject.Inject;
 import java.util.List;
@@ -31,13 +33,17 @@ public class ChaosCommand implements Runnable {
             for (OwnerReference reference : pod.getMetadata().getOwnerReferences()) {
                 logger.infof("\t Owner: %s (%s)", reference.getName(), reference.getKind());
             }
+            
+			if((pod.getMetadata().getName().contains(deployment) && !pod.getMetadata().getName().contains("postgres")) && new Random().nextInt(3) == 0){
+				kubernetes.pods().delete(pod);
+				logger.infof("Pod %s - %s (deleted)", pod.getMetadata().getName(), pod.getStatus().getPhase());
+			}
         }
 
         List<Deployment> deployments = kubernetes.apps().deployments().list().getItems();
         for (Deployment dep : deployments) {
             logger.infof("Deployment %s", dep.getMetadata().getName());
         }
-
     }
 
 }
