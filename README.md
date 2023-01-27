@@ -44,7 +44,7 @@ mvn package; docker build -f src/main/docker/Dockerfile.jvm -t workshop/villain 
 
 Vous pouvez également récupérer l'image sur dockerhub via cette commande :
 ```
-docker push m2gibonatov/villains_services
+docker pull m2gibonatov/villains_services
 ```
 
 ### Lancer fight
@@ -64,7 +64,7 @@ mvn package; docker build -f src/main/docker/Dockerfile.jvm -t workshop/fight .;
 
 Vous pouvez également récupérer l'image sur dockerhub via cette commande :
 ```
-docker push m2gibonatov/fight_services
+docker pull m2gibonatov/fight_services
 ```
 
 ## Chaos
